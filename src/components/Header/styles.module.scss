@@ -1,0 +1,32 @@
+.header{
+    height: 127px;
+    background: linear-gradient(90deg, #343333 38.05%, #484848 69.22%, #282828 98.98%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.headerContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1280px;
+}
+
+.favorites{
+    display: flex;
+    color: white;
+    align-items: center;
+    transition: 0.3s ease-out;
+    span{
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    &:hover  {
+        color: gray; 
+        cursor:pointer;
+    }
+}

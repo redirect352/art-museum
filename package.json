@@ -64,5 +64,18 @@
 	"lint-staged": {
 		"*.{js,ts,tsx}": "eslint --fix ",
 		"*.{js,ts,tsx,css,md,html,json}": "prettier --cache --write"
+	},
+	"imports": {
+		"#*": [
+			"./src/*",
+			"./src/*.ts",
+			"./src/*.tsx",
+			"./src/*.js",
+			"./src/*.jsx",
+			"./src/*/index.ts",
+			"./src/*/index.tsx",
+			"./src/*/index.js",
+			"./src/*/index.jsx"
+		]
 	}
 }

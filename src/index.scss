@@ -3,3 +3,14 @@ body {
 	font-family: "Lexend Deca", serif;
   	font-optical-sizing: auto;
 }
+#root{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+main {
+	flex: 1;
+}
+a{
+	text-decoration: none;
+}
