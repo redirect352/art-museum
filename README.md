@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# Tестовое задание Modsen Art Museum
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Содержание
 
-## Available Scripts
+- [Техническое задание](#Техническое-задание)
+- [API](#API)
+- [Необходимый функционал](#Необходимый-функционал)
+- [Пример графического представления](#Пример-графического-представления)
+- [Используемые технологии](#Используемые-технологии)
+- [Тестирование](#Тестирование)
+- [Полезные ссылки](#Полезные-ссылки)
 
-In the project directory, you can run:
+## Техническое задание
 
-### `yarn start`
+Реализовать приложение для отображения каталога с картинами.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Список API для использования (если представленные API не удовлетворяют каким-либо условиям задания, можно использовать любые другие открытые API):
+[Art API](https://api.artic.edu/docs/#introduction)
 
-### `yarn test`
+## Необходимый функционал
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Получение данных о картинах с внешнего API;
+- Отображение списка картин с возможностью пагинации;
+- Реализация формы поиска с валидацией введенных данных;
+- Использование роутинга для разделения страниц приложения;
+- Реализация дебаунса для поисковой формы с помощью кастомного хука;
+- Возможность добавления картины в список избранных с сохранением их в SessionStorage;
+- Возможность просмотра более детальной информации о картине и возврате на главную страницу;
+- Интерфейс для просмотра списка избранных и возможности удаления из списка;
+- Реализация возможности сортировки картин по различным критериям (по названию произведения) (продумать самостоятельно).
 
-### `yarn build`
+## Пример графического представления
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ссылка на макет: ["Modsen Art Museum"](https://www.figma.com/file/XSLT4bMToK5tOdbXBBuqhP/Trainee-task-1?type=design&node-id=0-1&mode=design&t=tthepIdFQRlAXlVS-0).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Так же проект предполагает
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- При загрузке товаров необходимо реализовать Loader;
+- Оптимизацию дизайна под мобильные устройства (до 360px);
+- Реализацию burger-menu;
+- Обработку ошибок через паттерн **_Error Boundaries_**;
+- Использование TypeScript для типизирования и уменьшения количества потенциальных багов;
+- Использование алиасов для импортирования файлов;
+- Покрытие тестами 35% функциональности приложения;
+- Организацию файловой структуры react приложения. Ссылка на структуру: [Структура проекта](https://github.com/mkrivel/structure);
+- Деплой приложения на платформу Vercel или Netlify;
+- Настройку конфигурации eslint, prettier, husky, commitlint;
+- Использование корректного GitFlow в проекте;
+- Использование сторонних библиотек для стилей - запрещены, кроме рекомендуемых в пункте “Используемые технологии”.
 
-### `yarn eject`
+## Описание экранов
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Главная страница представляет собой информационную часть приложения, в которой можно выполнить поиск и отсортировать получаемые данные. Также на главной странице необходимо реализовать пагинацию по трем картинам. При клике на выбранную картину должен осуществляться переход на страницу с детальной информацией, чтобы изучить произведение подробнее(необходимо самостоятельно добавить кнопку возврата на главную страницу). Понравившиеся произведения можно поместить в избранное, чтобы иметь быстрый доступ к их изучению и просмотру.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Используемые технологии
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **_node.js_** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код);
+- **_eslint_** - линтер для JavaScript кода;
+- **_prettier_** - инструмент для автоформатирования кода;
+- **_yarn_** - менеджер пакетов;
+- **_react_** - JavaScript-библиотека для создания пользовательских интерфейсов;
+- **_typescript_** - строго типизированный язык для уменьшения количества потенциальных багов;
+- **_SCSS_** - препроцессор, который служит для быстрого написания CSS стилей;
+- **_jest_** - библиотека для unit-тестирования;
+- **_react-router-dom_** - библиотека для навигации между разными частями веб-приложения;
+- **_yup_** - библиотека для валидации форм;
+- **_react-hook-form_** - библиотека для обработки элемента ввода формы.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Полезные ссылки
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[React](https://reactjs.org/docs/getting-started.html)
+[React hooks](https://reactjs.org/docs/hooks-intro.html)
+[Eslint](https://eslint.org/docs/user-guide/configuring)
+[Prettier](https://prettier.io/docs/en/install.html)
+[SCSS](https://sass-lang.com/)
+[Husky](https://dev.to/ivadyhabimana/setup-eslint-prettier-and-husky-in-a-node-project-a-step-by-step-guide-946)
+[GitFlow](https://www.atlassian.com/ru/git/tutorials/comparing-workflows/gitflow-workflow)
+[Commit Convention](https://www.conventionalcommits.org/en/v1.0.0/)
