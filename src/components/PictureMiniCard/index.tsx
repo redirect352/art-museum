@@ -2,24 +2,24 @@ import React from 'react';
 import { FunctionComponent } from 'react';
 import classes from './styles.module.scss';
 import Image from '../Image';
-import PictureDescription from '../PictureDescription';
 import AddToFavoritesButton from '../AddToFavoritesButton';
+import PictureDescription from '../PictureDescription';
 
-interface PictureCardProps {
+interface PictureMiniCardProps {
 	src: string;
 	title: string;
 	author: string;
 	isOnView: boolean;
 }
 
-const PictureCard: FunctionComponent<PictureCardProps> = ({
+const PictureMiniCard: FunctionComponent<PictureMiniCardProps> = ({
 	src,
 	title,
 	author,
 	isOnView,
 }) => {
 	return (
-		<section className={classes.card}>
+		<div className={classes.card}>
 			<Image src={src} className={classes.cardImage} alt={title} />
 			<div className={classes.cardInfo}>
 				<div className={classes.cardInfoContainer}>
@@ -28,11 +28,11 @@ const PictureCard: FunctionComponent<PictureCardProps> = ({
 						isOnView={isOnView}
 						title={title}
 					/>
-					<AddToFavoritesButton />
 				</div>
 			</div>
-		</section>
+			<AddToFavoritesButton />
+		</div>
 	);
 };
 
-export default PictureCard;
+export default PictureMiniCard;
