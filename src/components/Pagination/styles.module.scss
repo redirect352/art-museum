@@ -1,0 +1,26 @@
+.pagination{
+  width: min-content;
+  display: flex;
+  gap: 7.5px;
+  .paginationItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 24px;
+    border-radius: 4px;
+    &[data-active=true]{
+      font-weight: 600;
+      color: #FFF;
+      background-color: #F17900;
+    }
+    &:hover{
+      transition: 0.1s ease-in;
+      border: 1px solid #F17900;
+      cursor: pointer;
+    }
+  }
+}

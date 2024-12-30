@@ -8,14 +8,14 @@ interface PictureCardProps {
 	src: string;
 	title: string;
 	author: string;
-	galleryTitle?: string;
+	isOnView: boolean;
 }
 
 const PictureCard: FunctionComponent<PictureCardProps> = ({
 	src,
 	title,
 	author,
-	galleryTitle,
+	isOnView,
 }) => {
 	return (
 		<section className={classes.card}>
@@ -28,7 +28,7 @@ const PictureCard: FunctionComponent<PictureCardProps> = ({
 							<span className={classes.artistLabel}>{author}</span>
 						</div>
 						<strong className={classes.publicLabel}>
-							{galleryTitle ?? 'Not in view'}
+							{isOnView ? 'Public' : 'Not in view'}
 						</strong>
 					</div>
 					<button className={classes.favoritesButton}>

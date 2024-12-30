@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './styles.module.scss';
 import SearchInput from '#components/SearchInput';
+import PictureGallery from '#components/PictureGallery';
 
 const MainPage = () => {
 	return (
@@ -13,6 +14,7 @@ const MainPage = () => {
 				Topics for you
 			</span>
 			<h3 className={classes.subHeader}>Our special gallery</h3>
+			<PictureGallery />
 		</div>
 	);
 };
