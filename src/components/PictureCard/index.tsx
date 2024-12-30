@@ -2,23 +2,34 @@ import React from 'react';
 import { FunctionComponent } from 'react';
 import classes from './styles.module.scss';
 import { ReactComponent as BookmarkIcon } from '#assets/bookmark.svg';
+import Image from '../Image';
 
 interface PictureCardProps {
 	src: string;
+	title: string;
+	author: string;
+	galleryTitle?: string;
 }
 
-const PictureCard: FunctionComponent<PictureCardProps> = ({ src }) => {
+const PictureCard: FunctionComponent<PictureCardProps> = ({
+	src,
+	title,
+	author,
+	galleryTitle,
+}) => {
 	return (
 		<section className={classes.card}>
-			<img src={src} className={classes.cardImage} />
+			<Image src={src} className={classes.cardImage} alt={title} />
 			<div className={classes.cardInfo}>
 				<div className={classes.cardInfoContainer}>
 					<div className={classes.textInfo}>
 						<div className={classes.artAndArtist}>
-							<h5 className={classes.cardHeader}>Charles V, bust length...</h5>
-							<span className={classes.artistLabel}>Giovanni Britto</span>
+							<h5 className={classes.cardHeader}>{title}</h5>
+							<span className={classes.artistLabel}>{author}</span>
 						</div>
-						<strong className={classes.publicLabel}>Public</strong>
+						<strong className={classes.publicLabel}>
+							{galleryTitle ?? 'Not in view'}
+						</strong>
 					</div>
 					<button className={classes.favoritesButton}>
 						<BookmarkIcon />

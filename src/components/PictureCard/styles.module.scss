@@ -1,69 +1,80 @@
-.card{
-    width: 387px;
-    height: 514px;
-    margin-top: 100px;
-    position: relative;
+.card {
+	width: 387px;
+	height: 514px;
+	margin-top: 100px;
+	position: relative;
 }
-.cardImage{
-    width: 387px;
-    height: 444px;
+.cardImage {
+	width: 387px;
+	height: 444px;
 }
-.cardInfo{
-    position: absolute;
-    width: 334px;
-    height: 132px;
-    background: #FFFFFF;
-    top: 382px;
-    left: 26px;
+.cardInfo {
+	position: absolute;
+	width: 334px;
+	height: 132px;
+	background: #ffffff;
+	top: 382px;
+	left: 26px;
 }
-.cardInfoContainer{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;  
-    gap: 8px;
+.cardInfoContainer {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 24px;
+	gap: 8px;
 }
-.favoritesButton{
-    background-color: #F9F9F9;
-    width: 59px;
-    height: 59px;
-    border-radius: 35px;
-    border: none;
-    &:hover, &:active, &:focus{
-        background-color: #FBD7B24D;
+.favoritesButton {
+	background-color: #f9f9f9;
+	width: 59px;
+	height: 59px;
+	border-radius: 35px;
+	border: none;
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: #fbd7b24d;
+	}
+}
+.textInfo {
+	width: 219px;
+	height: 98px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	.artAndArtist {
+		height: 63px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 4px 0;
+		gap: 0;
+    %textShared{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-clamp: 1;
+      overflow: hidden; 
+      line-height: 26.32px
     }
-}
-.textInfo{
-    width: 219px;
-    height: 98px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .artAndArtist{
-        height: 63px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 4px 0;
-        gap: 0;
-        line-height: 26.32px;
-        .cardHeader{
-            margin: 0;
-            font-size: 17.54px;
-            font-weight: 500;
-            letter-spacing: -0.03em;
-        }
-        .artistLabel{
-            color: #E0A449;
-            font-size: 15.35px;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-        }
-        .publicLabel{
-            font-size: 15.35px;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-    }
+		.cardHeader {
+      @extend %textShared;
+			margin: 0;
+			font-size: 17.54px;
+			font-weight: 500;
+			letter-spacing: -0.03em;
+		}
+		.artistLabel {
+      @extend %textShared;
+			color: #e0a449;
+			font-size: 15.35px;
+			font-weight: 400;
+			letter-spacing: -0.01em;
+		}
+		.publicLabel {
+      @extend %textShared;
+			font-size: 15.35px;
+			font-weight: 700;
+			letter-spacing: -0.01em;
+		}
+	}
 }
