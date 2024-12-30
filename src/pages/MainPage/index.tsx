@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './styles.module.scss';
 import SearchInput from '#components/SearchInput';
 import PictureGallery from '#components/PictureGallery';
+import ErrorBoundary from '#components/ErrorBoundary';
 
 const MainPage = () => {
 	return (
@@ -14,7 +15,9 @@ const MainPage = () => {
 				Topics for you
 			</span>
 			<h3 className={classes.subHeader}>Our special gallery</h3>
-			<PictureGallery />
+			<ErrorBoundary>
+				<PictureGallery />
+			</ErrorBoundary>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PictureCard from '../PictureCard';
 import classes from './styles.module.scss';
 import Pagination from '#components/Pagination';
@@ -22,8 +22,12 @@ const PictureGallery = () => {
 			),
 		[page]
 	);
-	const { loadState, content } =
+	const { loadState, content, error } =
 		useLoader<ApiResponseWithPagination<GalleryItem[]>>(loadFunc);
+	useEffect(() => {
+		console.log(error);
+		if (error) throw error;
+	}, [error]);
 	return (
 		<section className={classes.gallerySection}>
 			<Loader active={loadState === LoadStates.loading} />
@@ -42,7 +46,7 @@ const PictureGallery = () => {
 			</div>
 			<div className={classes.pagination}>
 				<Pagination
-					totalCount={Math.min(3000, content?.pagination.total ?? 1)}
+					totalCount={Math.min(3000, content?.pagination?.total ?? 1)}
 				/>
 			</div>
 		</section>

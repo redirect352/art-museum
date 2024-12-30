@@ -7,6 +7,8 @@ export enum LoadStates {
 }
 export type ApiError = {
 	status: number;
+	error: string;
+	detail: string;
 };
 function useLoader<T>(loadFunction: () => Promise<Response>) {
 	const [content, updateContent] = useState<T | undefined>(undefined);
@@ -15,12 +17,18 @@ function useLoader<T>(loadFunction: () => Promise<Response>) {
 
 	const onContentLoaded = async (loadedCharacters: Response) => {
 		const data = await loadedCharacters.json();
+		if ((data as ApiError) !== undefined) {
+			setError(data);
+			changeLoadState(LoadStates.errored);
+			return;
+		}
 		updateContent(data as T);
 		changeLoadState(LoadStates.succeed);
 	};
 	const onError = (error: ApiError) => {
+		console.log('gerr');
 		console.error(error);
-		setError(error ?? 'Unknown error');
+		setError(error);
 		changeLoadState(LoadStates.errored);
 	};
 	const reload = () => {
