@@ -26,7 +26,6 @@ function useLoader<T>(loadFunction: () => Promise<Response>) {
 		changeLoadState(LoadStates.succeed);
 	};
 	const onError = (error: ApiError) => {
-		console.log('gerr');
 		console.error(error);
 		setError(error);
 		changeLoadState(LoadStates.errored);

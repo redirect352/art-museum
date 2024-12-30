@@ -23,7 +23,6 @@ const PictureRecommendations = () => {
 	const { loadState, content, error } =
 		useLoader<ApiResponseWithPagination<GalleryItem[]>>(loadFunc);
 	useEffect(() => {
-		console.log(error);
 		if (error) throw error;
 	}, [error]);
 	return (

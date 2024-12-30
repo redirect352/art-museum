@@ -15,17 +15,19 @@ type GalleryItem = Pick<
 
 const PictureGallery = () => {
 	const page = useSearchParamValue<number>('page');
+	const search = useSearchParamValue<string>('s');
 	const loadFunc = useCallback(
 		() =>
 			fetch(
-				`https://api.artic.edu/api/v1/artworks?page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`
+				search
+					? `https://api.artic.edu/api/v1/artworks/search?q=${search}&page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`
+					: `https://api.artic.edu/api/v1/artworks?page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`
 			),
-		[page]
+		[page, search]
 	);
 	const { loadState, content, error } =
 		useLoader<ApiResponseWithPagination<GalleryItem[]>>(loadFunc);
 	useEffect(() => {
-		console.log(error);
 		if (error) throw error;
 	}, [error]);
 	return (
