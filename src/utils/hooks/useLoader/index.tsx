@@ -17,7 +17,7 @@ function useLoader<T>(loadFunction: () => Promise<Response>) {
 
 	const onContentLoaded = async (loadedCharacters: Response) => {
 		const data = await loadedCharacters.json();
-		if ((data as ApiError) !== undefined) {
+		if (data.error !== undefined) {
 			setError(data);
 			changeLoadState(LoadStates.errored);
 			return;
