@@ -1,8 +1,9 @@
-import React, { useDeferredValue, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './styles.module.scss';
 import { ReactComponent as NextSvg } from '#assets/next.svg';
 import { usePagination } from '#utils/hooks/usePagination';
 import { useSearchParams } from 'react-router';
+import useDebounce from '#utils/hooks/useDebounce';
 
 interface PaginationProps {
 	totalCount: number;
@@ -13,7 +14,7 @@ const Pagination = ({ totalCount }: PaginationProps) => {
 	const [activePage, setActivePage] = useState(() =>
 		searchParams.has('page') ? +(searchParams.get('page') ?? 1) : 1
 	);
-	const page = useDeferredValue(activePage);
+	const pageDebounced = useDebounce(activePage, 500);
 	const p = usePagination({
 		totalCount,
 		pageSize: 3,
@@ -21,12 +22,12 @@ const Pagination = ({ totalCount }: PaginationProps) => {
 		siblingCount: 1,
 	});
 	useEffect(() => {
-		if (searchParams.get('page') !== page.toString()) {
+		if (searchParams.get('page') !== pageDebounced.toString()) {
 			const newParams = new URLSearchParams(searchParams);
-			newParams.set('page', page.toString());
+			newParams.set('page', pageDebounced.toString());
 			setSearchParams(newParams);
 		}
-	}, [page]);
+	}, [pageDebounced]);
 	return (
 		<div className={classes.pagination}>
 			{p?.map((val, index) => (
@@ -38,7 +39,7 @@ const Pagination = ({ totalCount }: PaginationProps) => {
 						typeof val === 'number' ? () => setActivePage(val) : undefined
 					}
 				>
-					{val}
+					<span>{val}</span>
 				</div>
 			))}
 			{activePage < +(p?.at(-3) ?? 0) && (

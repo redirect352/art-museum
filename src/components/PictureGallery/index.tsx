@@ -41,7 +41,9 @@ const PictureGallery = () => {
 				)}
 			</div>
 			<div className={classes.pagination}>
-				<Pagination totalCount={content?.pagination.total ?? 1} />
+				<Pagination
+					totalCount={Math.min(3000, content?.pagination.total ?? 1)}
+				/>
 			</div>
 		</section>
 	);
