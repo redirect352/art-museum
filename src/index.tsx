@@ -4,6 +4,7 @@ import './index.scss';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Header from '#components/Header';
 import Footer from '#components/Footer';
+import MainPage from './pages/MainPage';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -14,7 +15,7 @@ root.render(
 			<Header />
 			<main>
 				<Routes>
-					<Route index element={<div>Page is still empty</div>} />
+					<Route index element={<MainPage />} />
 				</Routes>
 			</main>
 			<Footer />
