@@ -1,0 +1,43 @@
+.textInfo {
+	width: 219px;
+	height: 98px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+    text-align: start;
+	.artAndArtist {
+		height: 63px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 4px 0;
+		gap: 0;
+    %textShared{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-clamp: 1;
+      overflow: hidden; 
+      line-height: 26.32px
+    }
+		.cardHeader {
+      @extend %textShared;
+			margin: 0;
+			font-size: 17.54px;
+			font-weight: 500;
+			letter-spacing: -0.03em;
+		}
+		.artistLabel {
+      @extend %textShared;
+			color: #e0a449;
+			font-size: 15.35px;
+			font-weight: 400;
+			letter-spacing: -0.01em;
+		}
+		.publicLabel {
+      @extend %textShared;
+			font-size: 15.35px;
+			font-weight: 700;
+			letter-spacing: -0.01em;
+		}
+	}
+}

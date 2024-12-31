@@ -1,0 +1,25 @@
+.card {
+	width: 387px;
+	height: 514px;
+	position: relative;
+}
+.cardImage {
+	width: 387px;
+	height: 444px;
+}
+.cardInfo {
+	position: absolute;
+	width: 334px;
+	height: 132px;
+	background: #ffffff;
+	top: 382px;
+	left: 26px;
+}
+.cardInfoContainer {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 24px;
+	gap: 8px;
+}

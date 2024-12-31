@@ -1,0 +1,12 @@
+.favoritesButton {
+	background-color: #f9f9f9;
+	width: 59px;
+	height: 59px;
+	border-radius: 35px;
+	border: none;
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: #fbd7b24d;
+	}
+}
