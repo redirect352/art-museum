@@ -30,6 +30,13 @@ const PictureGallery = () => {
 	useEffect(() => {
 		if (error) throw error;
 	}, [error]);
+	if (loadState === LoadStates.succeed && content?.pagination.total === 0) {
+		return (
+			<h2>
+				Sorry. Nothing found for your request. Try to find something different
+			</h2>
+		);
+	}
 	return (
 		<section className={classes.gallerySection}>
 			<Loader active={loadState === LoadStates.loading} />

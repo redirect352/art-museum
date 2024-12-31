@@ -25,9 +25,18 @@
   .icon{
     height: 32px;
     width: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
   }
   &:hover{
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
   }
+}
+.error{
+  color: red;
+  font-weight: 300;
+  font-size: 14px;
+  transition: 0.3s ease-in;
 }
