@@ -9,7 +9,10 @@ const AddToFavoritesButton: FunctionComponent<AddToFavoritesButtonProps> = (
 	props
 ) => {
 	return (
-		<button className={classes.favoritesButton} {...props}>
+		<button
+			{...props}
+			className={[classes.favoritesButton, props.className].join(' ')}
+		>
 			<BookmarkIcon />
 		</button>
 	);

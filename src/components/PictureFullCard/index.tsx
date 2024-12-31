@@ -1,0 +1,89 @@
+import React, { FunctionComponent, useCallback } from 'react';
+import classes from './styles.module.scss';
+import useLoader, { LoadStates } from '#utils/hooks/useLoader';
+import { ApiResponseWithPagination } from '#utils/types/ApiResponseWithPagination';
+import { PictureItem } from '#utils/types/PictureItem';
+import Loader from '../../components/Loader';
+import Image from '../Image';
+import AddToFavoritesButton from '../AddToFavoritesButton';
+type PictureDetailed = Pick<
+	PictureItem,
+	| 'id'
+	| 'artist_title'
+	| 'title'
+	| 'image_id'
+	| 'is_on_view'
+	| 'artist_display'
+	| 'credit_line'
+	| 'catalogue_display'
+	| 'date_display'
+	| 'dimensions'
+>;
+
+interface PictureFullCardProps {
+	id: number;
+}
+
+const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
+	const loadFunc = useCallback(
+		() => fetch(`https://api.artic.edu/api/v1/artworks/${id}`),
+		[id]
+	);
+	const { loadState, content } =
+		useLoader<ApiResponseWithPagination<PictureDetailed>>(loadFunc);
+	return (
+		<section className={classes.fullCard}>
+			<Loader active={loadState === LoadStates.loading} />
+			{content && (
+				<>
+					<div className={classes.imageBox}>
+						<Image
+							src={`https://www.artic.edu/iiif/2/${content.data.image_id}/full/843,/0/default.jpg`}
+							className={classes.image}
+						/>
+						<AddToFavoritesButton className={classes.pictureButton} />
+					</div>
+					<div className={classes.rightBlock}>
+						<div className={classes.headerBlock}>
+							<h1 className={classes.pictureTitle}>{content.data.title}</h1>
+							<h3 className={classes.authorTitle}>
+								{content.data.artist_title}
+							</h3>
+							<strong className={classes.yearsDisplay}>
+								{content.data.date_display}
+							</strong>
+						</div>
+						<div className={classes.overviewBlock}>
+							<h2 className={classes.pictureTitle}>Overview</h2>
+							<div className={classes.overviewContent}>
+								<div className={classes.item}>
+									<span>Artist nationality:</span>{' '}
+									{content.data.artist_display?.slice(
+										content.data.artist_display.indexOf('\n'),
+										content.data.artist_display.indexOf(',')
+									)}
+								</div>
+								<div className={classes.item}>
+									<span>Dimensions: Sheet:</span>{' '}
+									{content.data.dimensions ?? '-'}
+								</div>
+								<div className={classes.item}>
+									<span>Credit Line:</span> {content.data.credit_line ?? '-'}
+								</div>
+								<div className={classes.item}>
+									<span>Repository:</span>{' '}
+									{content.data.catalogue_display ?? '-'}
+								</div>
+								<div className={classes.item}>
+									{content.data.is_on_view ? 'Public' : 'Not in view'}
+								</div>
+							</div>
+						</div>
+					</div>
+				</>
+			)}
+		</section>
+	);
+};
+
+export default PictureFullCard;
