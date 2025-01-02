@@ -12,4 +12,8 @@
 	&[data-favorite=true]{
 		background-color: #FBD7B24D;
 	}
+	@media (max-width: 480px) {
+		width: 45px;
+		height: 45px;
+	}
 }
