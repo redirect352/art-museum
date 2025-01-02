@@ -6,6 +6,10 @@
 .cardImage {
 	width: 387px;
 	height: 444px;
+	@media (max-width: 480px) {
+		width: 320px;
+		height: 400px;
+	}
 }
 .cardInfo {
 	position: absolute;

@@ -47,7 +47,10 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 							src={`https://www.artic.edu/iiif/2/${content.data.image_id}/full/843,/0/default.jpg`}
 							className={classes.image}
 						/>
-						<AddToFavoritesButton className={classes.pictureButton} />
+						<AddToFavoritesButton
+							pictureId={id}
+							className={classes.pictureButton}
+						/>
 					</div>
 					<div className={classes.rightBlock}>
 						<div className={classes.headerBlock}>
