@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import PictureCard from '../PictureCard';
 import classes from './styles.module.scss';
 import Pagination from '#components/Pagination';
@@ -16,14 +16,23 @@ type GalleryItem = Pick<
 const PictureGallery = () => {
 	const page = useSearchParamValue<number>('page');
 	const search = useSearchParamValue<string>('s');
+	const sort = useSearchParamValue<number>('sort');
+	const order = useSearchParamValue<number>('order');
+	const sortQueryParam = useMemo(
+		() => (sort ? `&sort[${sort}]=${order}` : ''),
+		[sort, order]
+	);
 	const loadFunc = useCallback(
 		() =>
 			fetch(
-				search
-					? `https://api.artic.edu/api/v1/artworks/search?q=${search}&page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`
-					: `https://api.artic.edu/api/v1/artworks?page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`
+				[
+					'https://api.artic.edu/api/v1/artworks',
+					search ? `/search?q=${search}&` : '/search?',
+					`page=${page ?? 1}&limit=3&fields=id,title,image_id,is_on_view,artist_title`,
+					sortQueryParam,
+				].join('')
 			),
-		[page, search]
+		[page, search, sortQueryParam]
 	);
 	const { loadState, content, error } =
 		useLoader<ApiResponseWithPagination<GalleryItem[]>>(loadFunc);
