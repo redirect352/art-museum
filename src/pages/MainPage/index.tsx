@@ -4,6 +4,7 @@ import SearchInput from '#components/SearchInput';
 import PictureGallery from '#components/PictureGallery';
 import ErrorBoundary from '#components/ErrorBoundary';
 import PictureRecommendations from '#components/PictureRecommendations';
+import SortBar from '#components/SortBar';
 
 const MainPage = () => {
 	return (
@@ -12,6 +13,7 @@ const MainPage = () => {
 				Let&apos;s Find Some <span>Art</span> Here!
 			</h1>
 			<SearchInput />
+			<SortBar />
 			<span className={[classes.label, classes.coloredLabel].join(' ')}>
 				Topics for you
 			</span>
