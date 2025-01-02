@@ -67,32 +67,6 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 							catalogue_display={content.data.catalogue_display}
 							is_on_view={content.data.is_on_view}
 						/>
-						{/* <div className={classes.overviewBlock}>
-							<h2 className={classes.pictureTitle}>Overview</h2>
-							<div className={classes.overviewContent}>
-								<div className={classes.item}>
-									<span>Artist nationality:</span>{' '}
-									{content.data.artist_display?.slice(
-										content.data.artist_display.indexOf('\n'),
-										content.data.artist_display.indexOf(',')
-									)}
-								</div>
-								<div className={classes.item}>
-									<span>Dimensions: Sheet:</span>{' '}
-									{content.data.dimensions ?? '-'}
-								</div>
-								<div className={classes.item}>
-									<span>Credit Line:</span> {content.data.credit_line ?? '-'}
-								</div>
-								<div className={classes.item}>
-									<span>Repository:</span>{' '}
-									{content.data.catalogue_display ?? '-'}
-								</div>
-								<div className={classes.item}>
-									{content.data.is_on_view ? 'Public' : 'Not in view'}
-								</div>
-							</div>
-						</div> */}
 					</div>
 				</>
 			)}
