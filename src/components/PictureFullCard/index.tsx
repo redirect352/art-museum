@@ -37,7 +37,6 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 			throw error ?? { message: 'Unknown picture load error' };
 		}
 	}, [error, loadState]);
-	console.log(content);
 	return (
 		<section className={classes.fullCard}>
 			<Loader active={loadState === LoadStates.loading} />
