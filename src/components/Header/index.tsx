@@ -10,8 +10,6 @@ import { useOutsideClick } from '#utils/hooks/useClickOutside';
 
 const Header: FunctionComponent = () => {
 	const { pathname } = useLocation();
-	console.log(pathname);
-
 	const ref = useOutsideClick(() => setOpen(false));
 	const [isOpened, setOpen] = useState(false);
 	return (
