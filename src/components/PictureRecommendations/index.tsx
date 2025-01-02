@@ -12,7 +12,7 @@ type GalleryItem = Pick<
 >;
 
 const PictureRecommendations = () => {
-	const page = useMemo(() => 100 + Math.random() * 100, []);
+	const page = useMemo(() => 100 + Math.floor(Math.random() * 100), []);
 	const loadFunc = useCallback(
 		() =>
 			fetch(

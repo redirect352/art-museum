@@ -39,7 +39,7 @@ const PictureMiniCard: FunctionComponent<PictureMiniCardProps> = ({
 					/>
 				</div>
 			</div>
-			<AddToFavoritesButton />
+			<AddToFavoritesButton pictureId={pictureId} />
 		</div>
 	);
 };

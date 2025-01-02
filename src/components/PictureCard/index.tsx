@@ -23,14 +23,12 @@ const PictureCard: FunctionComponent<PictureCardProps> = ({
 	const pictureLink = `/picture/${pictureId}`;
 	return (
 		<section className={classes.card}>
-			{/* <Link to={pictureLink}> */}
 			<Image
 				src={src}
 				className={classes.cardImage}
 				alt={title}
 				href={pictureLink}
 			/>
-			{/* </Link> */}
 			<div className={classes.cardInfo}>
 				<div className={classes.cardInfoContainer}>
 					<PictureDescription
@@ -39,7 +37,7 @@ const PictureCard: FunctionComponent<PictureCardProps> = ({
 						title={title}
 						pictureLink={pictureLink}
 					/>
-					<AddToFavoritesButton />
+					<AddToFavoritesButton pictureId={pictureId} />
 				</div>
 			</div>
 		</section>
