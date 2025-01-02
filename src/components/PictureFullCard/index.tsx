@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import classes from './styles.module.scss';
 import useLoader, { LoadStates } from '#utils/hooks/useLoader';
 import { ApiResponseWithPagination } from '#utils/types/ApiResponseWithPagination';
@@ -29,8 +29,13 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 		() => fetch(`https://api.artic.edu/api/v1/artworks/${id}`),
 		[id]
 	);
-	const { loadState, content } =
+	const { loadState, content, error } =
 		useLoader<ApiResponseWithPagination<PictureDetailed>>(loadFunc);
+	useEffect(() => {
+		if (loadState === LoadStates.errored) {
+			throw error ?? { message: 'Unknown picture load error' };
+		}
+	}, [error, loadState]);
 	return (
 		<section className={classes.fullCard}>
 			<Loader active={loadState === LoadStates.loading} />
