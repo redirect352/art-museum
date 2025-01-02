@@ -1,0 +1,7 @@
+@use '/src/assets/styles/colors' as c;
+.empty-list-heading{
+    font-weight: 500;
+    .orange{
+        color: c.$heading-orange;
+    }
+}

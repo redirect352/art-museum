@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@hookform/resolvers": "^3.9.1",
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.0.0",
 		"@testing-library/user-event": "^13.2.1",
@@ -64,5 +65,18 @@
 	"lint-staged": {
 		"*.{js,ts,tsx}": "eslint --fix ",
 		"*.{js,ts,tsx,css,md,html,json}": "prettier --cache --write"
+	},
+	"imports": {
+		"#*": [
+			"./src/*",
+			"./src/*.ts",
+			"./src/*.tsx",
+			"./src/*.js",
+			"./src/*.jsx",
+			"./src/*/index.ts",
+			"./src/*/index.tsx",
+			"./src/*/index.js",
+			"./src/*/index.jsx"
+		]
 	}
 }

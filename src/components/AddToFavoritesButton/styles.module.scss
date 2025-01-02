@@ -1,0 +1,19 @@
+.favoritesButton {
+	background-color: #f9f9f9;
+	width: 59px;
+	height: 59px;
+	border-radius: 35px;
+	border: none;
+	transition: 0.3s ease-in;
+	&:hover,
+	&:active{
+		background-color: #fbd7b24d;
+	}
+	&[data-favorite=true]{
+		background-color: #FBD7B24D;
+	}
+	@media (max-width: 480px) {
+		width: 45px;
+		height: 45px;
+	}
+}

@@ -1,0 +1,19 @@
+@use '/src/assets/styles/colors' as colors;
+@use '/src/assets/styles/page-shared' as page-shared;
+
+.pageContainer{
+    @include  page-shared.page-container;
+    h1{
+        @include page-shared.page-heading;
+        margin: 0;
+    }
+    .favorites-section{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        .section-heading{
+            @include page-shared.section-heading;        
+        }
+    }
+}

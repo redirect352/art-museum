@@ -1,0 +1,12 @@
+.errorBox{
+  border: 1px #E0A449 solid; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+.scalingImage{
+  &:active, &:hover{
+		transition: 0.3s ease-in-out;
+		scale: 1.05;
+	}
+}

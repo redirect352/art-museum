@@ -1,0 +1,45 @@
+@use 'colors' as colors;
+
+@mixin page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 120px 0px;
+    gap: 120px;
+}
+
+@mixin page-heading {
+    margin-top: 120px;
+    text-align: center;
+    max-width: 640px;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 80px;
+    span{
+        color: colors.$heading-orange;
+    }
+    @media (max-width: 960px) {
+        font-size: 48px;
+    }
+    @media (max-width: 460px) {
+        font-size: 32px;
+    }  
+}
+
+@mixin section-heading{
+    display: flex;
+    flex-direction: column;
+    span{
+        color: colors.$text-orange;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    h3{
+        margin: 0;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 40px;
+        text-align: left;
+    }
+}
