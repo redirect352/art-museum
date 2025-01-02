@@ -10,6 +10,7 @@ interface PictureMiniCardProps {
 	title: string;
 	author: string;
 	isOnView: boolean;
+	pictureId: number;
 }
 
 const PictureMiniCard: FunctionComponent<PictureMiniCardProps> = ({
@@ -17,16 +18,24 @@ const PictureMiniCard: FunctionComponent<PictureMiniCardProps> = ({
 	title,
 	author,
 	isOnView,
+	pictureId,
 }) => {
+	const pictureLink = `/picture/${pictureId}`;
 	return (
 		<div className={classes.card}>
-			<Image src={src} className={classes.cardImage} alt={title} />
+			<Image
+				src={src}
+				className={classes.cardImage}
+				alt={title}
+				href={pictureLink}
+			/>
 			<div className={classes.cardInfo}>
 				<div className={classes.cardInfoContainer}>
 					<PictureDescription
 						author={author}
 						isOnView={isOnView}
 						title={title}
+						pictureLink={pictureLink}
 					/>
 				</div>
 			</div>

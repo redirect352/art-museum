@@ -33,6 +33,7 @@ const PictureRecommendations = () => {
 					({ id, title, artist_title, is_on_view, image_id }) => (
 						<PictureMiniCard
 							key={id}
+							pictureId={id}
 							src={`https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`}
 							title={title}
 							author={artist_title}

@@ -12,29 +12,33 @@
 		justify-content: space-between;
 		padding: 4px 0;
 		gap: 0;
-    %textShared{
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-clamp: 1;
-      overflow: hidden; 
-      line-height: 26.32px
-    }
+		%textShared{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden; 
+		line-height: 26.32px
+		}
 		.cardHeader {
-      @extend %textShared;
+      		@extend %textShared;
 			margin: 0;
 			font-size: 17.54px;
 			font-weight: 500;
 			letter-spacing: -0.03em;
+			transition: 0.2s ease-in;
+			&:hover{
+				color: #e0a449;
+				cursor: pointer;
+			}
 		}
 		.artistLabel {
-      @extend %textShared;
+      		@extend %textShared;
 			color: #e0a449;
 			font-size: 15.35px;
 			font-weight: 400;
 			letter-spacing: -0.01em;
 		}
 		.publicLabel {
-      @extend %textShared;
+			@extend %textShared;
 			font-size: 15.35px;
 			font-weight: 700;
 			letter-spacing: -0.01em;
