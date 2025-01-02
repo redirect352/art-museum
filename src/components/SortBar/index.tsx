@@ -6,22 +6,26 @@ import { useSearchParam } from '#utils/hooks/useSeachParam';
 
 type SortFields = 'is_on_view' | 'has_not_been_viewed_much';
 type Inputs = {
-	sort: SortFields;
+	sort?: SortFields;
 	order: number;
 };
 
 const SortBar = () => {
-	const { register, watch, resetField, setValue } = useForm<Inputs>({
-		defaultValues: { order: 1 },
+	const { setParam: setSortURL, value: sortUrl } = useSearchParam('sort');
+	const { setParam: setOrderURL, value: orderUrl } = useSearchParam('order');
+	const { register, watch, setValue } = useForm<Inputs>({
+		defaultValues: {
+			order: orderUrl ? (orderUrl === 'asc' ? 1 : 2) : 1,
+			sort: sortUrl ? (sortUrl as SortFields) : undefined,
+		},
 	});
 	const sort = watch('sort');
 	const order = watch('order');
 	const sortDebounce = useDebounce(watch('sort'), 400);
 	const orderDebounce = useDebounce(watch('order'), 400);
-	const { setParam: setSortURL } = useSearchParam('sort');
-	const { setParam: setOrderURL } = useSearchParam('order');
+
 	useEffect(() => {
-		setSortURL(sortDebounce, (params) => {
+		setSortURL(sortDebounce ?? '', (params) => {
 			if (!sortDebounce) params.delete('order');
 			if (sortDebounce && params.get('order') === null)
 				params.set('order', order === 1 ? 'asc' : 'desc');
@@ -35,7 +39,7 @@ const SortBar = () => {
 		(fieldName: keyof Inputs) =>
 		(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
 			if ((e.target as HTMLInputElement).value === watch(fieldName)) {
-				resetField(fieldName);
+				setValue(fieldName, undefined);
 			}
 		};
 
