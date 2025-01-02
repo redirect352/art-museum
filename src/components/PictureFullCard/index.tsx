@@ -6,6 +6,7 @@ import { PictureItem } from '#utils/types/PictureItem';
 import Loader from '../../components/Loader';
 import Image from '../Image';
 import AddToFavoritesButton from '../AddToFavoritesButton';
+import PictureOverview from '../PictureOverview';
 type PictureDetailed = Pick<
 	PictureItem,
 	| 'id'
@@ -36,6 +37,7 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 			throw error ?? { message: 'Unknown picture load error' };
 		}
 	}, [error, loadState]);
+	console.log(content);
 	return (
 		<section className={classes.fullCard}>
 			<Loader active={loadState === LoadStates.loading} />
@@ -58,7 +60,14 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 								{content.data.date_display}
 							</strong>
 						</div>
-						<div className={classes.overviewBlock}>
+						<PictureOverview
+							artist_display={content.data.artist_display}
+							dimensions={content.data.dimensions}
+							credit_line={content.data.credit_line}
+							catalogue_display={content.data.catalogue_display}
+							is_on_view={content.data.is_on_view}
+						/>
+						{/* <div className={classes.overviewBlock}>
 							<h2 className={classes.pictureTitle}>Overview</h2>
 							<div className={classes.overviewContent}>
 								<div className={classes.item}>
@@ -83,7 +92,7 @@ const PictureFullCard: FunctionComponent<PictureFullCardProps> = ({ id }) => {
 									{content.data.is_on_view ? 'Public' : 'Not in view'}
 								</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</>
 			)}
