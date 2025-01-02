@@ -10,6 +10,7 @@ interface PictureCardProps {
 	title: string;
 	author: string;
 	isOnView: boolean;
+	pictureId: number;
 }
 
 const PictureCard: FunctionComponent<PictureCardProps> = ({
@@ -17,16 +18,26 @@ const PictureCard: FunctionComponent<PictureCardProps> = ({
 	title,
 	author,
 	isOnView,
+	pictureId,
 }) => {
+	const pictureLink = `/picture/${pictureId}`;
 	return (
 		<section className={classes.card}>
-			<Image src={src} className={classes.cardImage} alt={title} />
+			{/* <Link to={pictureLink}> */}
+			<Image
+				src={src}
+				className={classes.cardImage}
+				alt={title}
+				href={pictureLink}
+			/>
+			{/* </Link> */}
 			<div className={classes.cardInfo}>
 				<div className={classes.cardInfoContainer}>
 					<PictureDescription
 						author={author}
 						isOnView={isOnView}
 						title={title}
+						pictureLink={pictureLink}
 					/>
 					<AddToFavoritesButton />
 				</div>
