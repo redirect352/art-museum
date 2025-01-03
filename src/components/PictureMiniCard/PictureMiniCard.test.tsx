@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import PictureCard from './index';
+import PictureMiniCard from './index';
 
 const mockData = {
 	src: 'src-mock',
@@ -39,8 +39,8 @@ jest.mock(
 afterEach(() => {
 	jest.restoreAllMocks();
 });
-test('renders item-card with desription and image', async () => {
-	render(<PictureCard {...mockData} />);
+test('renders item with desription and image', async () => {
+	render(<PictureMiniCard {...mockData} />);
 	expect(screen.getByTestId(mockData.src)).toBeInTheDocument();
 	expect(screen.getByText(mockData.author)).toBeInTheDocument();
 	expect(screen.getByText(mockData.title)).toBeInTheDocument();
