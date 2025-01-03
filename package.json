@@ -5,8 +5,8 @@
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.1",
 		"@testing-library/jest-dom": "^5.14.1",
-		"@testing-library/react": "^13.0.0",
-		"@testing-library/user-event": "^13.2.1",
+		"@testing-library/react": "^16.1.0",
+		"@testing-library/user-event": "^14.5.2",
 		"@types/jest": "^27.0.1",
 		"@types/node": "^16.7.13",
 		"@types/react": "^18.0.0",
@@ -25,6 +25,7 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
+		"test2": "jest --watch",
 		"eject": "react-scripts eject",
 		"prepare": "husky && husky install",
 		"lint": "eslint . --fix --max-warnings=0",
@@ -50,6 +51,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.17.0",
+		"@testing-library/dom": "^10.4.0",
 		"eslint": "^9.17.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-config-react": "^1.1.7",
@@ -78,5 +80,12 @@
 			"./src/*/index.js",
 			"./src/*/index.jsx"
 		]
+	},
+	"jest": {
+		"moduleNameMapper": {
+			"#components/(.*)": "<rootDir>/src/components/$1",
+			"#assets/(.*)": "<rootDir>/src/assets/$1",
+			"#utils/(.*)": "<rootDir>/src/utils/$1"
+		}
 	}
 }
